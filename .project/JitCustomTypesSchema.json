@@ -1,0 +1,115 @@
+{
+  "exportedBy": null,
+  "bundleHash": null,
+  "version": "1.0.0.0",
+  "jitAssemblyCompilerCommands": [
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 1,
+        "idRef": "NExtractDataGeneric`1_1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|DpzADcID5fnrisFQekkuzTvGJtpOZYsperl9NWMqLVA",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "#",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Title",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Album",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Date added",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Column-4",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|1avHwrd1FZh8T9Cn70ZNdCWfqqY6rutz5Lfj7ZGzY",
+        "assemblyName": "Studio.Generated.TypedDataTable1"
+      }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 2,
+        "idRef": "NExtractDataGeneric`1_1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|VTozUBvqTcljt4KiL0HkzSebjcZDmhes8Dk1KyHGY",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "#",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Title",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Album",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Date added",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Duration",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable2",
+        "hash": "NExtractDataGeneric`1_1|DataTable|q2IBs5Tg5dNVbibvx6q01TMMpeJ5qwY8A3pfPcuZg",
+        "assemblyName": "Studio.Generated.TypedDataTable2"
+      }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 3,
+        "idRef": "NExtractDataGeneric`1_2",
+        "hash": "NExtractDataGeneric`1_2|DataTable|VTozUBvqTcljt4KiL0HkzSebjcZDmhes8Dk1KyHGY",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "#",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Title",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Album",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Date added",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Duration",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable3",
+        "hash": "NExtractDataGeneric`1_2|DataTable|q2IBs5Tg5dNVbibvx6q01TMMpeJ5qwY8A3pfPcuZg",
+        "assemblyName": "Studio.Generated.TypedDataTable3"
+      }
+    }
+  ]
+}
