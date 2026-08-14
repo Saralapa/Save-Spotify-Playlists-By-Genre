@@ -1,5 +1,5 @@
 {
-  "name": "Playlists Spotify",
+  "name": "Playlists-Spotify",
   "projectId": "def0246e-01af-4130-84d8-5127ccd056af",
   "description": "Salvar Playlists no Spotify com base nos Gêneros da Música",
   "main": "Main.xaml",

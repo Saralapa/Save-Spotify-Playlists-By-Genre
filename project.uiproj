@@ -1,5 +1,5 @@
 {
-  "Name": "Playlists Spotify",
+  "Name": "Playlists-Spotify",
   "ProjectType": "Process",
   "Description": "Salvar Playlists no Spotify com base nos Gêneros da Música",
   "MainFile": "Main.xaml"
