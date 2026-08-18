@@ -50,6 +50,7 @@
             followers: "Artist Followers",
             monthly: "Monthly Listeners",
             genres: "Genres",
+            unknown: "Unknown",
             error: "Could not load song info.",
         },
         pt: {
@@ -69,6 +70,7 @@
             followers: "Seguidores do artista",
             monthly: "Ouvintes mensais",
             genres: "Gêneros",
+            unknown: "Desconhecido",
             error: "Não foi possível obter as informações.",
         },
         es: {
@@ -88,6 +90,7 @@
             followers: "Seguidores del artista",
             monthly: "Oyentes mensuales",
             genres: "Géneros",
+            unknown: "Desconocido",
             error: "No se pudo obtener la información.",
         },
         fr: {
@@ -107,6 +110,7 @@
             followers: "Abonnés de l'artiste",
             monthly: "Auditeurs mensuels",
             genres: "Genres",
+            unknown: "Inconnu",
             error: "Impossible de récupérer les informations.",
         },
         de: {
@@ -126,6 +130,7 @@
             followers: "Follower",
             monthly: "Monatliche Hörer",
             genres: "Genres",
+            unknown: "Unbekannt",
             error: "Informationen konnten nicht geladen werden.",
         },
         cs: {
@@ -145,6 +150,7 @@
             followers: "Sledující",
             monthly: "Měsíční posluchači",
             genres: "Žánry",
+            unknown: "Neznámé",
             error: "Informace se nepodařilo načíst.",
         },
     };
@@ -390,7 +396,9 @@
                 [T.totalTracks, totalTracks ? String(totalTracks) : null],
                 [T.followers, formatNumber(followers)],
                 [T.monthly, formatNumber(monthly)],
-                [T.genres, genres],
+                // Sempre exibida: cai para o texto de "desconhecido" quando o
+                // MusicBrainz não retorna nada, em vez de sumir da lista.
+                [T.genres, genres || T.unknown],
             ].filter(([, v]) => v != null && v !== "");
 
             if (!rows.length) throw new Error("nenhum campo pôde ser extraído");

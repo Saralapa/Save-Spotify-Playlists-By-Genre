@@ -111,6 +111,7 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -118,7 +119,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Adicionar_músicas_nas_playlists" sap:VirtualizedContainerService.HintSize="1281,8041" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Adicionar_músicas_nas_playlists" sap:VirtualizedContainerService.HintSize="1201,7085" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd2:DataTable" Name="dt_numero_colunas" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="max_generos" />
@@ -137,25 +138,25 @@
         <InArgument x:TypeArguments="x:Int32">[CInt(dt_numero_colunas(0)(0).ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Spotify Premium" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="628,7588" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="WindowMessages" ScopeGuid="1e642d13-504c-4624-a17d-d087997a9c48" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: Spotify Premium" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="628,6712" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="WindowMessages" ScopeGuid="1e642d13-504c-4624-a17d-d087997a9c48" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="626,7333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="626,6466" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RepeatNumberOfTimesX DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="592,7273" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_1" NumberOfTimes="[max_generos]" StartAt="1">
+            <ui:RepeatNumberOfTimesX DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="592,6406" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_1" NumberOfTimes="[max_generos]" StartAt="1">
               <ui:RepeatNumberOfTimesX.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="genero" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="558,7083" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="558,6216" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="sd2:DataTable" Name="dt_musicas" />
                     </Sequence.Variables>
@@ -171,7 +172,7 @@
                             <OutArgument x:TypeArguments="ui:UiElement" />
                           </uix:SearchedElement.OutUiElement>
                           <uix:SearchedElement.Target>
-                            <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" ElementVisibilityArgument="[UiPath.UIAutomationNext.Enums.NElementVisibility.None]" FullSelectorArgument="&lt;ctrl name='*song*' role='text' idx='1' /&gt;" Guid="2a99c6e2-a778-487f-b48b-624585d1c7d2" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
+                            <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" ElementVisibilityArgument="[UiPath.UIAutomationNext.Enums.NElementVisibility.None]" FullSelectorArgument="&lt;ctrl name='*song*' role='text' idx='1' /&gt;" Guid="2a99c6e2-a778-487f-b48b-624585d1c7d2" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
                           </uix:SearchedElement.Target>
                           <uix:SearchedElement.Timeout>
                             <InArgument x:TypeArguments="x:Double" />
@@ -179,14 +180,14 @@
                         </uix:SearchedElement>
                       </uix:NMouseScroll.SearchedElement>
                     </uix:NMouseScroll>
-                    <d:db_execute_script sap:VirtualizedContainerService.HintSize="524,175" sap2010:WorkflowViewState.IdRef="db_execute_script_2" dt_dados_out="[dt_musicas]" script_in="[&quot;SELECT * FROM spotify.playlist_soberana&#xA;WHERE genre_&quot;+genero.ToString+&quot; IS NOT NULL&#xA;AND genre_&quot;+genero.ToString+&quot; != 'Unkown'&#xA;AND genre_&quot;+genero.ToString+&quot; != 'NULL'&#xA;AND bol_genre_&quot;+genero.ToString+&quot; &lt; 1&#xA;ORDER BY index ASC;&quot;]" />
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_musicas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,6585" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <d:db_execute_script sap:VirtualizedContainerService.HintSize="524,175" sap2010:WorkflowViewState.IdRef="db_execute_script_2" dt_dados_out="[dt_musicas]" script_in="[&quot;SELECT * FROM spotify.playlist_soberana&#xA;WHERE genre_&quot;+genero.ToString+&quot; IS NOT NULL&#xA;AND genre_&quot;+genero.ToString+&quot; != 'Unknown'&#xA;AND genre_&quot;+genero.ToString+&quot; != 'NULL'&#xA;AND (bol_genre_&quot;+genero.ToString+&quot; &lt; 1 OR bol_genre_&quot;+genero.ToString+&quot; IS NULL)&#xA;ORDER BY index ASC;&quot;]" />
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_musicas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,5718" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd2:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd2:DataRow" Name="musica" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,6412" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,5545" sap2010:WorkflowViewState.IdRef="Sequence_3">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:Boolean" Name="carregou" />
                             </Sequence.Variables>
@@ -195,7 +196,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not carregou]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="488,1226" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="488,1226" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
                               <ui:InterruptibleDoWhile.Body>
                                 <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1095" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -230,7 +231,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <uix:NMouseScroll KeyModifiers="{x:Null}" CursorMotionType="[UiPath.UIAutomationNext.Enums.CursorMotionType.Instant]" DelayAfter="0" DelayBefore="0" Direction="Down" DisplayName="Mouse Scroll 'RecommendedBased on wha…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,298" sap2010:WorkflowViewState.IdRef="NMouseScroll_3" InteractionMode="SameAsCard" MovementUnits="10" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                           <uix:NMouseScroll.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="387, 91, 1161, 873" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='*' role='document' /&gt;&lt;ctrl name='Playlist Soberana - playlist by Gabriel Schmitt Teixeira | Spoti*' role='grouping' /&gt;&lt;ctrl name='Playlist Soberana' role='table' /&gt;" Guid="30a773e1-497e-450b-8542-2989dc710606" InformativeScreenshot="5c1b3f03c362f5dd06ba7eba92b411b4.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                            <uix:TargetAnchorable DesignTimeRectangle="387, 91, 1161, 873" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='*' role='document' /&gt;&lt;ctrl name='Playlist Soberana - playlist by Gabriel Schmitt Teixeira | Spoti*' role='grouping' /&gt;&lt;ctrl name='Playlist Soberana' role='table' /&gt;" Guid="30a773e1-497e-450b-8542-2989dc710606" InformativeScreenshot="5c1b3f03c362f5dd06ba7eba92b411b4.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                           </uix:NMouseScroll.Target>
                                         </uix:NMouseScroll>
                                         <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -244,11 +245,14 @@
                                       </Sequence>
                                     </uix:NCheckState.IfNotExists>
                                     <uix:NCheckState.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="bd40289c-9879-403d-a113-335d5321b73c" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="bd40289c-9879-403d-a113-335d5321b73c" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
                                     </uix:NCheckState.Target>
                                   </uix:NCheckState>
                                 </Sequence>
                               </ui:InterruptibleDoWhile.Body>
+                              <ui:InterruptibleDoWhile.Condition>
+                                <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not carregou" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                              </ui:InterruptibleDoWhile.Condition>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -278,7 +282,7 @@
                                     <OutArgument x:TypeArguments="ui:UiElement" />
                                   </uix:SearchedElement.OutUiElement>
                                   <uix:SearchedElement.Target>
-                                    <uix:TargetAnchorable DesignTimeRectangle="485, 656, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="72c5acf7-6ba3-4b7c-ab06-04ddbdb9e28a" InformativeScreenshot="f261b6eac650deab6d1161c46295242f.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
+                                    <uix:TargetAnchorable DesignTimeRectangle="485, 656, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="72c5acf7-6ba3-4b7c-ab06-04ddbdb9e28a" InformativeScreenshot="f261b6eac650deab6d1161c46295242f.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
                                   </uix:SearchedElement.Target>
                                   <uix:SearchedElement.Timeout>
                                     <InArgument x:TypeArguments="x:Double" />
@@ -286,14 +290,9 @@
                                 </uix:SearchedElement>
                               </uix:NMouseScroll.SearchedElement>
                             </uix:NMouseScroll>
-                            <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'Gabriel Schmitt Teixeira'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="NClick_19" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
+                            <uix:NClick ActivateBefore="True" ClickType="[UiPath.UIAutomationNext.Enums.NClickType.Single]" DelayBefore="1" DisplayName="Click" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="[UiPath.UIAutomationNext.Enums.NMouseButton.Right]" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                               <uix:NClick.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="1738, 23, 32, 32" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='push button' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='grouping' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='graphic' /&gt;" Guid="f8c6b611-4f2e-489c-a502-6f1f763b7d49" InformativeScreenshot="a69367b1cf019b50f3f572b28c536811.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                              </uix:NClick.Target>
-                            </uix:NClick>
-                            <uix:NClick ActivateBefore="True" ClickType="[UiPath.UIAutomationNext.Enums.NClickType.Single]" DelayBefore="1" DisplayName="Click" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                              <uix:NClick.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="569, 531, 40, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl role='grouping' idx='2' /&gt;&quot;]" Guid="bc39c8f8-138d-43b8-870f-4062256697b9" InformativeScreenshot="8088ee2ceedc4790e1bc8907aa001b87.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                <uix:TargetAnchorable DesignTimeRectangle="569, 531, 40, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl role='grouping' idx='2' /&gt;&quot;]" Guid="bc39c8f8-138d-43b8-870f-4062256697b9" InformativeScreenshot="8088ee2ceedc4790e1bc8907aa001b87.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                               </uix:NClick.Target>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -302,39 +301,12 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NClick>
-                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'More options for Maps b…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                              <uix:NClick.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="1544, 535, 15, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl role='table' idx='2' /&gt;&lt;ctrl name='Play*' role='row' /&gt;&lt;ctrl name='*More options for*' role='cell' /&gt;&lt;ctrl name='More options for*' role='menu button' /&gt;" Guid="b22186a8-c864-4db2-890f-2c930cf490b4" InformativeScreenshot="ce8588e7aae58aa7e9b9624f233fe70e.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                              </uix:NClick.Target>
-                            </uix:NClick>
-                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                              <ui:CommentOut.Body>
-                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,245" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '1'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="[UiPath.UIAutomationNext.Enums.NMouseButton.Right]" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                    <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="377, 544, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl role='table' idx='2' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl role='grouping' /&gt;&quot;]" Guid="be51b998-ff44-4059-a53c-8524be521805" InformativeScreenshot="239b8991280a44e96a55983b927a73fb.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                                    </uix:NClick.Target>
-                                  </uix:NClick>
-                                </Sequence>
-                              </ui:CommentOut.Body>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:CommentOut>
                             <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'Add to playlist'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                               <uix:NClick.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="387, 541, 270, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Add to playlist' role='menu item' /&gt;" Guid="f85012f4-2f7b-47c4-b794-d70e71cd71eb" InformativeScreenshot="a2934a079d24d69fd23de4670e2513d9.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                <uix:TargetAnchorable DesignTimeRectangle="387, 541, 270, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Add to playlist' role='menu item' /&gt;" Guid="f85012f4-2f7b-47c4-b794-d70e71cd71eb" InformativeScreenshot="a2934a079d24d69fd23de4670e2513d9.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                               </uix:NClick.Target>
                             </uix:NClick>
-                            <uix:NCheckState DisplayName="Check App State 'All Of Jotapê'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="488,4030" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Timeout="2" Version="V5">
+                            <uix:NCheckState DisplayName="Check App State 'All Of Jotapê'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="488,3608" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Timeout="2" Version="V5">
                               <uix:NCheckState.IfExists>
                                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="486,1185" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -345,7 +317,7 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'All Of Jotapê'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,194" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="4828280a-b354-4fc9-a462-122f42528f04" InformativeScreenshot="c25cb80e48418fbe5c52ccc0eb9ee6f3.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="4828280a-b354-4fc9-a462-122f42528f04" InformativeScreenshot="c25cb80e48418fbe5c52ccc0eb9ee6f3.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
                                   <uix:NCheckState DisplayName="Check App State 'Already added'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="452,931" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Timeout="2" Version="V5">
@@ -358,7 +330,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Don't add'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                           <uix:NClick.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="977, 535, 137, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Don&amp;apos;t add' role='push button' /&gt;" Guid="6d1d72a1-1849-444f-9051-acf72ccc5c96" InformativeScreenshot="20bbaa25e31393b5fcbb722ea61b6a78.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                            <uix:TargetAnchorable DesignTimeRectangle="977, 535, 137, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Don&amp;apos;t add' role='push button' /&gt;" Guid="6d1d72a1-1849-444f-9051-acf72ccc5c96" InformativeScreenshot="20bbaa25e31393b5fcbb722ea61b6a78.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                           </uix:NClick.Target>
                                         </uix:NClick>
                                         <d:db_execute_script dt_dados_out="{x:Null}" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="db_execute_script_5" script_in="[&quot;UPDATE spotify.playlist_soberana&#xA;SET bol_genre_&quot;+genero.ToString+&quot; = 2&#xA;WHERE index = &quot;+musica(&quot;index&quot;).ToString]" />
@@ -375,13 +347,13 @@
                                       </Sequence>
                                     </uix:NCheckState.IfNotExists>
                                     <uix:NCheckState.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="822, 461, 292, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Already added' role='grouping' /&gt;" Guid="c7b0eeb5-ae25-47b5-8d91-1db3d10f471a" InformativeScreenshot="7bad8eeb275a40e86f082c8c2313e822.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="822, 461, 292, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Already added' role='grouping' /&gt;" Guid="c7b0eeb5-ae25-47b5-8d91-1db3d10f471a" InformativeScreenshot="7bad8eeb275a40e86f082c8c2313e822.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NCheckState.Target>
                                   </uix:NCheckState>
                                 </Sequence>
                               </uix:NCheckState.IfExists>
                               <uix:NCheckState.IfNotExists>
-                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="486,2560" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="486,2138" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,35 +361,35 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Create'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="233, 87, 35, 35" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Main' role='grouping' /&gt;&lt;ctrl name='Create' role='push button' /&gt;" Guid="779b577b-e40a-4ec3-a85f-64df16435b52" InformativeScreenshot="5161b99a2ca08b53786fdedc071e986e.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="233, 87, 35, 35" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Main' role='grouping' /&gt;&lt;ctrl name='Create' role='push button' /&gt;" Guid="779b577b-e40a-4ec3-a85f-64df16435b52" InformativeScreenshot="5161b99a2ca08b53786fdedc071e986e.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Playlist'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="305, 144, 55, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Playlist' role='menu item' /&gt;&lt;ctrl name='Playlist' role='grouping' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="48e3b8ad-106f-4210-8043-751bbbd89d25" InformativeScreenshot="ca862d26128bb0420644ca78f64a2bdb.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="305, 144, 55, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Playlist' role='menu item' /&gt;&lt;ctrl name='Playlist' role='grouping' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="48e3b8ad-106f-4210-8043-751bbbd89d25" InformativeScreenshot="ca862d26128bb0420644ca78f64a2bdb.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'My Playlist #22'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="633, 195, 921, 116" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='*Edit details' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="01885dff-550e-43b5-913e-74918fea5b1e" InformativeScreenshot="9df9db390974f821fe201385c7278ae8.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="633, 195, 921, 116" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='*Edit details' role='push button' /&gt;&lt;ctrl role='grouping' /&gt;" Guid="01885dff-550e-43b5-913e-74918fea5b1e" InformativeScreenshot="9df9db390974f821fe201385c7278ae8.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
                                   <uix:NTypeInto ActivateBefore="True" ClipboardMode="[UiPath.UIAutomationNext.Enums.NTypeByClipboardMode.Never]" DisplayName="Type Into 'My Playlist #22'" EmptyFieldMode="[UiPath.UIAutomationNext.Enums.NEmptyFieldMode.SingleLine]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Text="[musica(&quot;genre_&quot;+genero.ToString).ToString]" Version="V5">
                                     <uix:NTypeInto.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="926, 407, 280, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Name' role='editable text' /&gt;" Guid="619f7913-ad74-4ebb-b166-491f91612c34" InformativeScreenshot="0a2e7873c6b4db7a45919045514aeedd.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="926, 407, 280, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Name' role='editable text' /&gt;" Guid="619f7913-ad74-4ebb-b166-491f91612c34" InformativeScreenshot="0a2e7873c6b4db7a45919045514aeedd.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NTypeInto.Target>
                                   </uix:NTypeInto>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Save'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="1106, 595, 100, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Save' role='push button' /&gt;" Guid="c6696e08-d3c1-4bde-bac5-51bd8b9f1de0" InformativeScreenshot="5963192c894fd9c883ddac6d756d0f7b.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="1106, 595, 100, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Save' role='push button' /&gt;" Guid="c6696e08-d3c1-4bde-bac5-51bd8b9f1de0" InformativeScreenshot="5963192c894fd9c883ddac6d756d0f7b.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Go back'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="83, 15, 24, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Go back' role='push button' /&gt;" Guid="bbc6d736-2075-43fb-8ff9-ede35988a611" InformativeScreenshot="f292a11422643f5a0b11658459462fc2.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="83, 15, 24, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Go back' role='push button' /&gt;" Guid="bbc6d736-2075-43fb-8ff9-ede35988a611" InformativeScreenshot="f292a11422643f5a0b11658459462fc2.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                   </uix:NClick>
-                                  <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not carregou]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+                                  <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
                                     <ui:InterruptibleDoWhile.Body>
                                       <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1095" sap2010:WorkflowViewState.IdRef="Sequence_17">
                                         <sap:WorkflowViewStateService.ViewState>
@@ -452,7 +424,7 @@
                                               </sap:WorkflowViewStateService.ViewState>
                                               <uix:NMouseScroll KeyModifiers="{x:Null}" CursorMotionType="[UiPath.UIAutomationNext.Enums.CursorMotionType.Instant]" DelayAfter="0" DelayBefore="0" Direction="Down" DisplayName="Mouse Scroll 'RecommendedBased on wha…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,298" sap2010:WorkflowViewState.IdRef="NMouseScroll_8" InteractionMode="SameAsCard" MovementUnits="10" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                                 <uix:NMouseScroll.Target>
-                                                  <uix:TargetAnchorable DesignTimeRectangle="387, 91, 1161, 873" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='*' role='document' /&gt;&lt;ctrl name='Playlist Soberana - playlist by Gabriel Schmitt Teixeira | Spoti*' role='grouping' /&gt;&lt;ctrl name='Playlist Soberana' role='table' /&gt;" Guid="30a773e1-497e-450b-8542-2989dc710606" InformativeScreenshot="5c1b3f03c362f5dd06ba7eba92b411b4.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                                  <uix:TargetAnchorable DesignTimeRectangle="387, 91, 1161, 873" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='*' role='document' /&gt;&lt;ctrl name='Playlist Soberana - playlist by Gabriel Schmitt Teixeira | Spoti*' role='grouping' /&gt;&lt;ctrl name='Playlist Soberana' role='table' /&gt;" Guid="30a773e1-497e-450b-8542-2989dc710606" InformativeScreenshot="5c1b3f03c362f5dd06ba7eba92b411b4.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                                 </uix:NMouseScroll.Target>
                                               </uix:NMouseScroll>
                                               <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -466,11 +438,14 @@
                                             </Sequence>
                                           </uix:NCheckState.IfNotExists>
                                           <uix:NCheckState.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="bd40289c-9879-403d-a113-335d5321b73c" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
+                                            <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="bd40289c-9879-403d-a113-335d5321b73c" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
                                           </uix:NCheckState.Target>
                                         </uix:NCheckState>
                                       </Sequence>
                                     </ui:InterruptibleDoWhile.Body>
+                                    <ui:InterruptibleDoWhile.Condition>
+                                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not carregou" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+                                    </ui:InterruptibleDoWhile.Condition>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -485,7 +460,7 @@
                                           <OutArgument x:TypeArguments="ui:UiElement" />
                                         </uix:SearchedElement.OutUiElement>
                                         <uix:SearchedElement.Target>
-                                          <uix:TargetAnchorable DesignTimeRectangle="485, 656, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="72c5acf7-6ba3-4b7c-ab06-04ddbdb9e28a" InformativeScreenshot="f261b6eac650deab6d1161c46295242f.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
+                                          <uix:TargetAnchorable DesignTimeRectangle="485, 656, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl name='Play*' role='push button' /&gt;&quot;]" Guid="72c5acf7-6ba3-4b7c-ab06-04ddbdb9e28a" InformativeScreenshot="f261b6eac650deab6d1161c46295242f.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
                                         </uix:SearchedElement.Target>
                                         <uix:SearchedElement.Timeout>
                                           <InArgument x:TypeArguments="x:Double" />
@@ -499,20 +474,9 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </uix:NMouseScroll>
-                                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'Gabriel Schmitt Teixeira'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="NClick_20" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
+                                  <uix:NClick ActivateBefore="True" ClickType="[UiPath.UIAutomationNext.Enums.NClickType.Single]" DelayBefore="1" DisplayName="Click" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_17" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="[UiPath.UIAutomationNext.Enums.NMouseButton.Right]" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="1738, 23, 32, 32" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='push button' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='grouping' /&gt;&lt;ctrl name='Gabriel Schmitt Teixeira' role='graphic' /&gt;" Guid="f8c6b611-4f2e-489c-a502-6f1f763b7d49" InformativeScreenshot="a69367b1cf019b50f3f572b28c536811.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                                    </uix:NClick.Target>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </uix:NClick>
-                                  <uix:NClick ActivateBefore="True" ClickType="[UiPath.UIAutomationNext.Enums.NClickType.Single]" DelayBefore="1" DisplayName="Click" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_17" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                    <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="569, 531, 40, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl role='grouping' idx='2' /&gt;&quot;]" Guid="bc39c8f8-138d-43b8-870f-4062256697b9" InformativeScreenshot="8088ee2ceedc4790e1bc8907aa001b87.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="569, 531, 40, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl role='grouping' idx='2' /&gt;&quot;]" Guid="bc39c8f8-138d-43b8-870f-4062256697b9" InformativeScreenshot="8088ee2ceedc4790e1bc8907aa001b87.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -521,42 +485,9 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </uix:NClick>
-                                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'More options for Maps b…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_18" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                    <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="1544, 535, 15, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl role='table' idx='2' /&gt;&lt;ctrl name='Play*' role='row' /&gt;&lt;ctrl name='*More options for*' role='cell' /&gt;&lt;ctrl name='More options for*' role='menu button' /&gt;" Guid="b22186a8-c864-4db2-890f-2c930cf490b4" InformativeScreenshot="ce8588e7aae58aa7e9b9624f233fe70e.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                                    </uix:NClick.Target>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </uix:NClick>
-                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                                    <ui:CommentOut.Body>
-                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,245" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '1'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="[UiPath.UIAutomationNext.Enums.NMouseButton.Right]" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                          <uix:NClick.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="377, 544, 16, 16" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl role='table' idx='2' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='row' /&gt;&lt;ctrl name='&quot;+musica(&quot;index&quot;).ToString+&quot; Play*' role='cell' /&gt;&lt;ctrl role='grouping' /&gt;&quot;]" Guid="be51b998-ff44-4059-a53c-8524be521805" InformativeScreenshot="239b8991280a44e96a55983b927a73fb.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                                          </uix:NClick.Target>
-                                        </uix:NClick>
-                                      </Sequence>
-                                    </ui:CommentOut.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:CommentOut>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'Add to playlist'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="387, 541, 270, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Add to playlist' role='menu item' /&gt;" Guid="f85012f4-2f7b-47c4-b794-d70e71cd71eb" InformativeScreenshot="a2934a079d24d69fd23de4670e2513d9.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="387, 541, 270, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='Add to playlist' role='menu item' /&gt;" Guid="f85012f4-2f7b-47c4-b794-d70e71cd71eb" InformativeScreenshot="a2934a079d24d69fd23de4670e2513d9.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -567,7 +498,7 @@
                                   </uix:NClick>
                                   <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="1" DisplayName="Click 'All Of Jotapê'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
                                     <uix:NClick.Target>
-                                      <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="4828280a-b354-4fc9-a462-122f42528f04" InformativeScreenshot="c25cb80e48418fbe5c52ccc0eb9ee6f3.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                      <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="4828280a-b354-4fc9-a462-122f42528f04" InformativeScreenshot="c25cb80e48418fbe5c52ccc0eb9ee6f3.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                                     </uix:NClick.Target>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -576,55 +507,11 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </uix:NClick>
-                                  <d:db_execute_script dt_dados_out="{x:Null}" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="db_execute_script_3" script_in="[&quot;UPDATE spotify.playlist_soberana&#xA;SET bol_genre_&quot;+genero.ToString+&quot; = 1&#xA;WHERE index = &quot;+musica(&quot;index&quot;).ToString]" />
-                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                                    <ui:CommentOut.Body>
-                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,245" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Playlist Soberana'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                          <uix:NClick.Target>
-                                            <uix:TargetAnchorable CVScreenId="4646ffdc-2987-42a5-aa6f-c3b4722a30ca" DesignTimeRectangle="91, 231, 125, 22" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='Main' role='grouping' /&gt;&lt;ctrl name='Your Library' role='table' /&gt;&lt;ctrl name='Playlist Soberana' role='row' /&gt;&lt;ctrl name='Playlist Soberana' role='cell' /&gt;&lt;ctrl name='Playlist Soberana' role='grouping' /&gt;&lt;ctrl role='grouping' idx='2' /&gt;" Guid="1e5454e3-c7fe-4e18-acc3-06774312691f" InformativeScreenshot="1d0e02bdd76245a6752af7ea0f834f2a.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="[UiPath.UIAutomationNext.Enums.NWaitForReady.Complete]" />
-                                          </uix:NClick.Target>
-                                        </uix:NClick>
-                                      </Sequence>
-                                    </ui:CommentOut.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:CommentOut>
-                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                                    <ui:CommentOut.Body>
-                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,245" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'New playlist'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1e642d13-504c-4624-a17d-d087997a9c48" Version="V5">
-                                          <uix:NClick.Target>
-                                            <uix:TargetAnchorable DesignTimeRectangle="661, 89, 332, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl role='document' /&gt;&lt;ctrl name='New playlist' role='menu item' /&gt;" Guid="bcef44b3-8f24-4996-89a6-652b8c20d68d" InformativeScreenshot="0f66c8729da4759ba151e34e4736c934.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                                          </uix:NClick.Target>
-                                        </uix:NClick>
-                                      </Sequence>
-                                    </ui:CommentOut.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:CommentOut>
+                                  <d:db_execute_script dt_dados_out="{x:Null}" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="db_execute_script_3" script_in="[&quot;UPDATE spotify.playlist_soberana&#xA;SET bol_genre_&quot;+genero.ToString+&quot; = 1&#xA;WHERE index = &quot;+musica(&quot;index&quot;).ToString]" />
                                 </Sequence>
                               </uix:NCheckState.IfNotExists>
                               <uix:NCheckState.Target>
-                                <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="66b5cddf-3f51-4e94-a6bb-3bec3d0c9c63" InformativeScreenshot="4a8e007fb40adec4e335a276111b1596.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                                <uix:TargetAnchorable DesignTimeRectangle="697, 130, 296, 40" ElementVisibilityArgument="Interactive" FullSelectorArgument="[&quot;&lt;ctrl role='document' /&gt;&lt;ctrl name='&quot;+musica(&quot;genre_&quot;+genero.ToString).ToString+&quot;' role='menu item' /&gt;&quot;]" Guid="66b5cddf-3f51-4e94-a6bb-3bec3d0c9c63" InformativeScreenshot="4a8e007fb40adec4e335a276111b1596.png" ScopeSelectorArgument="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                               </uix:NCheckState.Target>
                             </uix:NCheckState>
                           </Sequence>
@@ -652,7 +539,7 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-1928, -8, 1936, 1044" FilePath="C:\Users\Gabriel\AppData\Roaming\Spotify\spotify.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAThSURBVFhH1Vdbb1VFFC5KA0rvtOXM7L1XC5RSaGohhVal0kDSgiYFS2tp6W3ac9p6T3wxUR80Ijz45gWpxvim8fKgJkZjgibVgoqKF4zDxd4opRD4D59ZM7s95+yzq23hQVfyZe89s2atb2atWTM7Le3/IqRVDmn1IGn1Gmn1LWk1Rlpd98Hv3MZ9TawbHL9kIa3WkFaHSatJ0goLBOse4bFBe4sS0qqbtLoU4mChmCKteoJ2/1VIq+Wk1eshBpeKN0ir9KCfUPGdvx9i5Gbx4YJIkFbHQgbfKhwP+ksS0qojZBDonAKd7wVd6AVd7AP95YPfuY37gmPmR3fQrxHSKp+0mplTZAeXYhajfaA/ekA/dcI72Q5vuA3eN22g7w+BznRa/fEoaKofNOnrM+lU54xrpFVh0D8T4K0259wbaYf7Sj2cwe2Qe8sgtxVDljoQRREILwJBEYi1AnKzB3nPOjj7y+E8WQP3WAO8r1vt6jAhnkgqiSNB51mk1bTpHO2D93kzxDoJsTIHYmU2xB05cfB3IoLtd+ZAyELIXaVwX6yDN9IGmopZQnECvNLxYkVa7Z/rnIzBfWsvRFqGNZiRCyEKITe5ZqZydylkQxlk/UbIug2Q29ZClEiIwgKIVT4RJsHg96IInEer4f3QESRxIJFAfM+f6zXxdp+thfPIdrhv3w/vxEOgM102rmNR0EQMNBG1Bjk3TnfA+6IZ7tAeOI9VG6Iib7VdwcxciOVZkLUlVjeesPEdQVqNJMWISXAyzQyg6PrDoKuDNhk549nI7932yd+sd2XA6swMgC73G6Lex01wolUQTqFdzU0u6NcuO8b6OZVIYDyJAIOT51Q73ON74DxRY5KMZyGriiG3FNnnfSVw9pWbWbuv1tuVYgdMgjHVD+/LFrjP7ID3aVMwIScSCdxIcj4WhfdJk830FdkQyzIRScswELdlQtyeaZ5zbcsyrV6k0OSF+8JOs13ntiU/R6PJE9TqxvwExqNw32uEyMyDiBRA1qyD03qXWQn3uVq4z++0OfJ4tWk3MXfX2KRjMulZEMUCzlN3m9qRsOzzEkgNwfleeJ8dMEtovnkm0/02zrOYHrDtHPPhg6YGOM0VZtdw4nHsZcNGS4DzKtlHUghOphBgcOJdG4wXFE6+HztsBeRt9YufVNzPhDgRJ2PwTrTCiVVB5OcbQnSRCaTY/y6RQOoBdKHXzupwHZyerZC7NkBWEERxxBQaXnJZ5kLuWA+ncwvcl3fD+6rVlmQmw0SGD1rS4WfFUCIBvmolK0zG4LRUIJK2wsY1O88kpSz3ILcWQVYSxHpp97tJ0lUQq/PhNG6G924jaKzP1oxw54zmRAJciq8kKfB58ME+OE/fC/edB2wunO4A/ebXgLPdoJ87zay53xQgXiHeFelZcA5Vgv70T9FU51dT7o2k1UtJSjyYTzXez1z5+J1jyQZnwfHn9tmtdrbbHGCGSGVRsPAk4miSc59AQdJxvBSwM05cdsyrFT778OOYhbTqChmweDCR8Jkz/vmSyodEyKBbhTeD/lKEL47+BTI4+Gbx0YIupSw+Cb5KB40sFUMLdp4opJUirS6HGFwo+JbVF7S7KCGtIv4W5b+coIP5wLpHSSsRtLdkIa1yuXr5oeGzI/HnlA8zbuO+FtIqLzj+Pyt/Ay/UID3Mu7GcAAAAAElFTkSuQmCC" InformativeScreenshot="03af7c32623b3a6d2273e74a2cb5a0e5.png" Selector="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='Spotify Premium' /&gt;" Version="V2">
+        <uix:TargetApp Area="-1928, -8, 1936, 1044" FilePath="C:\Users\Gabriel\AppData\Roaming\Spotify\spotify.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAThSURBVFhH1Vdbb1VFFC5KA0rvtOXM7L1XC5RSaGohhVal0kDSgiYFS2tp6W3ac9p6T3wxUR80Ijz45gWpxvim8fKgJkZjgibVgoqKF4zDxd4opRD4D59ZM7s95+yzq23hQVfyZe89s2atb2atWTM7Le3/IqRVDmn1IGn1Gmn1LWk1Rlpd98Hv3MZ9TawbHL9kIa3WkFaHSatJ0goLBOse4bFBe4sS0qqbtLoU4mChmCKteoJ2/1VIq+Wk1eshBpeKN0ir9KCfUPGdvx9i5Gbx4YJIkFbHQgbfKhwP+ksS0qojZBDonAKd7wVd6AVd7AP95YPfuY37gmPmR3fQrxHSKp+0mplTZAeXYhajfaA/ekA/dcI72Q5vuA3eN22g7w+BznRa/fEoaKofNOnrM+lU54xrpFVh0D8T4K0259wbaYf7Sj2cwe2Qe8sgtxVDljoQRREILwJBEYi1AnKzB3nPOjj7y+E8WQP3WAO8r1vt6jAhnkgqiSNB51mk1bTpHO2D93kzxDoJsTIHYmU2xB05cfB3IoLtd+ZAyELIXaVwX6yDN9IGmopZQnECvNLxYkVa7Z/rnIzBfWsvRFqGNZiRCyEKITe5ZqZydylkQxlk/UbIug2Q29ZClEiIwgKIVT4RJsHg96IInEer4f3QESRxIJFAfM+f6zXxdp+thfPIdrhv3w/vxEOgM102rmNR0EQMNBG1Bjk3TnfA+6IZ7tAeOI9VG6Iib7VdwcxciOVZkLUlVjeesPEdQVqNJMWISXAyzQyg6PrDoKuDNhk549nI7932yd+sd2XA6swMgC73G6Lex01wolUQTqFdzU0u6NcuO8b6OZVIYDyJAIOT51Q73ON74DxRY5KMZyGriiG3FNnnfSVw9pWbWbuv1tuVYgdMgjHVD+/LFrjP7ID3aVMwIScSCdxIcj4WhfdJk830FdkQyzIRScswELdlQtyeaZ5zbcsyrV6k0OSF+8JOs13ntiU/R6PJE9TqxvwExqNw32uEyMyDiBRA1qyD03qXWQn3uVq4z++0OfJ4tWk3MXfX2KRjMulZEMUCzlN3m9qRsOzzEkgNwfleeJ8dMEtovnkm0/02zrOYHrDtHPPhg6YGOM0VZtdw4nHsZcNGS4DzKtlHUghOphBgcOJdG4wXFE6+HztsBeRt9YufVNzPhDgRJ2PwTrTCiVVB5OcbQnSRCaTY/y6RQOoBdKHXzupwHZyerZC7NkBWEERxxBQaXnJZ5kLuWA+ncwvcl3fD+6rVlmQmw0SGD1rS4WfFUCIBvmolK0zG4LRUIJK2wsY1O88kpSz3ILcWQVYSxHpp97tJ0lUQq/PhNG6G924jaKzP1oxw54zmRAJciq8kKfB58ME+OE/fC/edB2wunO4A/ebXgLPdoJ87zay53xQgXiHeFelZcA5Vgv70T9FU51dT7o2k1UtJSjyYTzXez1z5+J1jyQZnwfHn9tmtdrbbHGCGSGVRsPAk4miSc59AQdJxvBSwM05cdsyrFT778OOYhbTqChmweDCR8Jkz/vmSyodEyKBbhTeD/lKEL47+BTI4+Gbx0YIupSw+Cb5KB40sFUMLdp4opJUirS6HGFwo+JbVF7S7KCGtIv4W5b+coIP5wLpHSSsRtLdkIa1yuXr5oeGzI/HnlA8zbuO+FtIqLzj+Pyt/Ay/UID3Mu7GcAAAAAElFTkSuQmCC" InformativeScreenshot="03af7c32623b3a6d2273e74a2cb5a0e5.png" Selector="&lt;wnd app='spotify.exe' cls='Chrome_WidgetWin_1' title='*' /&gt;" Version="V2">
           <uix:TargetApp.Arguments>
             <InArgument x:TypeArguments="x:String" />
           </uix:TargetApp.Arguments>
@@ -662,6 +549,5 @@
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="628,80" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Write your comments in the Text property" />
   </Sequence>
 </Activity>
